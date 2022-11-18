@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Vector2 = UnityEngine.Vector2;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -9,20 +11,25 @@ public class PlayerMovement : MonoBehaviour
     public int numberOfJumps = 0;
     public int maxNumberOfJumps = 1;
     public float jumpForce;
+    public float dashSpeed;
+    bool canDash = true;
+    public float currentDashTime;
+    public float startDashTime;
+    private bool crRunning;
 
     Vector2 movement = Vector2.zero;
 
     Rigidbody2D rb = null;
-    SpriteRenderer sprite = null;
+    SpriteRenderer sp = null;
     Animator animator = null;
 
-    private enum Movementstate { idle, run, jump, fall }
+    private enum Movementstate { idle, run, jump, fall, dash}
 
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        sprite = GetComponent<SpriteRenderer>();
+        sp = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
 
     }
@@ -33,6 +40,28 @@ public class PlayerMovement : MonoBehaviour
         UpdateAnimationState();
 
     }
+
+    IEnumerator DashCoroutine(Vector2 direction)
+    {
+        crRunning = true;
+        canDash = false;
+        currentDashTime = startDashTime;
+        while (currentDashTime > 0f)
+        {
+            currentDashTime -= Time.deltaTime; 
+
+            rb.velocity = direction * dashSpeed; 
+                                                
+            yield return null; 
+        }
+
+        rb.velocity = new Vector2(0f, 0f); // Stop dashing.
+
+        canDash = true;
+        crRunning = false;
+
+    }
+
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
@@ -62,6 +91,21 @@ public class PlayerMovement : MonoBehaviour
         movement = val.Get<Vector2>();
     }
 
+    public void OnDash(InputValue val)
+    {
+        if (canDash && val.isPressed)
+        {
+            if (movement.x > 0)
+            {
+                StartCoroutine(DashCoroutine(Vector2.right));
+            }
+            else if (movement.x < 0)
+            {
+                StartCoroutine(DashCoroutine(Vector2.left));
+            }
+        }
+    }
+
     private void UpdateAnimationState()
     {
         Movementstate State;
@@ -69,13 +113,13 @@ public class PlayerMovement : MonoBehaviour
         if (movement.x > 0)
         {
             State = Movementstate.run;
-            sprite.flipX = false;
+            sp.flipX = false;
         }
 
         else if (movement.x < 0)
         {
             State = Movementstate.run;
-            sprite.flipX = true;
+            sp.flipX = true;
         }
 
         else
@@ -91,6 +135,18 @@ public class PlayerMovement : MonoBehaviour
         else if (rb.velocity.y < -.1f)
         {
             State = Movementstate.fall;
+        }
+
+        if (crRunning && movement.x < 0)
+        {
+            State = Movementstate.dash;
+            sp.flipX = true;
+        }
+
+        else if (crRunning && movement.x > 0)
+        {
+            State = Movementstate.dash;
+            sp.flipX = false;
         }
 
         animator.SetInteger("State", (int)State);
