@@ -4222,7 +4222,14 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: -7, y: 8}
+        - {x: -7, y: 5}
+        - {x: -4, y: 3}
+        - {x: -4, y: -2}
+        - {x: -3, y: -8}
+        - {x: 8, y: -8}
+        - {x: 8, y: 8}
       tessellationDetail: 0
       bones: []
       spriteID: 8ea9a48fccec1af4b9dccd500da0c676
@@ -4243,7 +4250,12 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: -8, y: 8}
+        - {x: -8, y: -8}
+        - {x: 2, y: -8}
+        - {x: 4, y: -2}
+        - {x: 8, y: 8}
       tessellationDetail: 0
       bones: []
       spriteID: bb0a0d2583aceb342882e602a6c9a039
@@ -6106,7 +6118,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Dungeon Ruins Tileset Day_149: -485234752
+      Dungeon Ruins Tileset Day_14: -1485014411
       Dungeon Ruins Tileset Day_43: 1042565146
       Dungeon Ruins Tileset Day_217: 618911343
       Dungeon Ruins Tileset Day_44: -1076680876
@@ -6176,14 +6188,14 @@ TextureImporter:
       Dungeon Ruins Tileset Day_225: 1570243208
       Dungeon Ruins Tileset Day_179: 336068498
       Dungeon Ruins Tileset Day_213: 206104392
-      Dungeon Ruins Tileset Day_260: 939876035
-      Dungeon Ruins Tileset Day_159: -1652274078
-      Dungeon Ruins Tileset Day_127: 1443184540
       Dungeon Ruins Tileset Day_199: 2106768996
+      Dungeon Ruins Tileset Day_138: 1826863348
+      Dungeon Ruins Tileset Day_127: 1443184540
+      Dungeon Ruins Tileset Day_260: 939876035
       Dungeon Ruins Tileset Day_50: -1507272496
       Dungeon Ruins Tileset Day_230: -407968412
       Dungeon Ruins Tileset Day_191: -1508771276
-      Dungeon Ruins Tileset Day_138: 1826863348
+      Dungeon Ruins Tileset Day_159: -1652274078
       Dungeon Ruins Tileset Day_118: 1694195172
       Dungeon Ruins Tileset Day_91: -1619403818
       Dungeon Ruins Tileset Day_193: -1861887522
@@ -6382,7 +6394,7 @@ TextureImporter:
       Dungeon Ruins Tileset Day_40: 534276232
       Dungeon Ruins Tileset Day_146: -912728150
       Dungeon Ruins Tileset Day_95: -700622618
-      Dungeon Ruins Tileset Day_14: -1485014411
+      Dungeon Ruins Tileset Day_149: -485234752
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
