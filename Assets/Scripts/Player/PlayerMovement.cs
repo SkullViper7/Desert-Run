@@ -8,13 +8,16 @@ using Vector2 = UnityEngine.Vector2;
 public class PlayerMovement : MonoBehaviour
 {
     public float speed;
+
     public int numberOfJumps = 0;
     public int maxNumberOfJumps = 1;
     public float jumpForce;
+
     public float dashSpeed;
     bool canDash = true;
     public float currentDashTime;
     public float startDashTime;
+
     private bool crRunning;
 
     Vector2 movement = Vector2.zero;
