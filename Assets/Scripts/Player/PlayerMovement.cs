@@ -76,16 +76,15 @@ public class PlayerMovement : MonoBehaviour
     }
     public void OnJump(InputValue val)
     {
-        if (numberOfJumps <= 0)
+        if (numberOfJumps > 0)
         {
-            return;
-        }
-        float innerValue = val.Get<float>();
-        if (innerValue > 0)
-        {
-            rb.velocity = new Vector2(rb.velocity.x, 0);
-            rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
-            numberOfJumps--;
+            float innerValue = val.Get<float>();
+            if (innerValue > 0)
+            {
+                rb.velocity = new Vector2(rb.velocity.x, 0);
+                rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+                numberOfJumps--;
+            }
         }
     }
 
