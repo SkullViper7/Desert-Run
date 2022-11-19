@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: -8855192602869447266}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -202,6 +202,7 @@ MonoBehaviour:
   numberOfJumps: 0
   maxNumberOfJumps: 1
   jumpForce: 7
+  bounceForce: 5
   dashSpeed: 20
   currentDashTime: 0
   startDashTime: 0.2

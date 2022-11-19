@@ -7,12 +7,23 @@ using Vector2 = UnityEngine.Vector2;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [Header("Movement")]
     public float speed;
 
+    [Header("Jump")]
     public int numberOfJumps = 0;
     public int maxNumberOfJumps = 1;
     public float jumpForce;
 
+    [Header("WallJump")]
+    public float wallJumpTime = 0.2f;
+    public float wallSlideSpeed = 0.3f;
+    public float wallDistance = 0.5f;
+    bool isWallSliding = false;
+    RaycastHit2D WallChechHit;
+    float jumpTime;
+
+    [Header("Dash")]
     public float dashSpeed;
     bool canDash = true;
     public float currentDashTime;
@@ -58,22 +69,21 @@ public class PlayerMovement : MonoBehaviour
             yield return null; 
         }
 
-        rb.velocity = new Vector2(0f, 0f); // Stop dashing.
+        rb.velocity = new Vector2(0f, 0f);
 
         canDash = true;
         crRunning = false;
 
     }
 
-
-    public void OnCollisionEnter2D(Collision2D collision)
+    public void OnCollisionEnter2D(Collision2D col)
     {
-        ContactPoint2D contact = collision.GetContact(0);
-        if (contact.normal.y > 0.7f)
+        if (col.gameObject.tag == "Ground")
         {
             numberOfJumps = maxNumberOfJumps;
         }
     }
+
     public void OnJump(InputValue val)
     {
         if (numberOfJumps > 0)
@@ -86,6 +96,7 @@ public class PlayerMovement : MonoBehaviour
                 numberOfJumps--;
             }
         }
+
     }
 
     public void OnMove(InputValue val)
