@@ -14,6 +14,8 @@ public class PlayerMovement : MonoBehaviour
     public int numberOfJumps = 0;
     public int maxNumberOfJumps = 1;
     public float jumpForce;
+    public LayerMask groundLayer;
+    private bool isGrounded = false;
 
     [Header("WallJump")]
     public float wallJumpTime = 0.2f;
@@ -53,6 +55,30 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = new Vector2(movement.x * speed, rb.velocity.y);
         UpdateAnimationState();
 
+        if (movement.x > 0)
+        {
+            WallChechHit = Physics2D.Raycast(transform.position, new Vector2(wallDistance, 0), wallDistance, groundLayer);
+        }
+        else if (movement.x < 0)
+        {
+            WallChechHit = Physics2D.Raycast(transform.position, new Vector2(-wallDistance, 0), wallDistance, groundLayer);
+        }
+
+        if (WallChechHit && !isGrounded && movement.x != 0)
+        {
+            isWallSliding = true;
+            jumpTime = Time.time + wallJumpTime;
+        }
+        else if (jumpTime < Time.time)
+        {
+            isWallSliding = false;
+        }
+
+        if (isWallSliding)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.x, wallSlideSpeed, float.MaxValue));
+        }
+
     }
 
     IEnumerator DashCoroutine(Vector2 direction)
@@ -80,6 +106,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (col.gameObject.tag == "Ground")
         {
+            isGrounded = true;
             numberOfJumps = maxNumberOfJumps;
         }
     }
@@ -96,7 +123,6 @@ public class PlayerMovement : MonoBehaviour
                 numberOfJumps--;
             }
         }
-
     }
 
     public void OnMove(InputValue val)

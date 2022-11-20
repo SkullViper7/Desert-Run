@@ -202,7 +202,13 @@ MonoBehaviour:
   numberOfJumps: 0
   maxNumberOfJumps: 1
   jumpForce: 7
-  bounceForce: 5
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  isGrounded: 0
+  wallJumpTime: 0.2
+  wallSlideSpeed: 0.3
+  wallDistance: 0.55
   dashSpeed: 20
   currentDashTime: 0
   startDashTime: 0.2
