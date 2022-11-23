@@ -14,7 +14,11 @@ public class PlayerMovement : MonoBehaviour
     public int numberOfJumps = 0;
     public int maxNumberOfJumps = 1;
     public float jumpForce;
+
+    [Header("Grounded")]
+    public Transform groundCheck;
     public LayerMask groundLayer;
+    public float groundRadius = 0.2f;
     private bool isGrounded = false;
 
     [Header("WallJump")]
@@ -55,13 +59,25 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = new Vector2(movement.x * speed, rb.velocity.y);
         UpdateAnimationState();
 
+        bool touchingGround = Physics2D.OverlapCircle(groundCheck.position, groundRadius, groundLayer);
+        if (touchingGround)
+        {
+            isGrounded = true;
+        }
+        else
+        {
+            isGrounded = false;
+        }
+
         if (movement.x > 0)
         {
             WallChechHit = Physics2D.Raycast(transform.position, new Vector2(wallDistance, 0), wallDistance, groundLayer);
+            Debug.DrawRay(transform.position, new Vector2(wallDistance, 0), Color.cyan);
         }
         else if (movement.x < 0)
         {
             WallChechHit = Physics2D.Raycast(transform.position, new Vector2(-wallDistance, 0), wallDistance, groundLayer);
+            Debug.DrawRay(transform.position, new Vector2(-wallDistance, 0), Color.cyan);
         }
 
         if (WallChechHit && !isGrounded && movement.x != 0)
@@ -73,10 +89,10 @@ public class PlayerMovement : MonoBehaviour
         {
             isWallSliding = false;
         }
-
+        
         if (isWallSliding)
         {
-            rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.x, wallSlideSpeed, float.MaxValue));
+            rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.x, -wallSlideSpeed, float.MaxValue));
         }
 
     }
@@ -101,26 +117,15 @@ public class PlayerMovement : MonoBehaviour
         crRunning = false;
 
     }
-
-    public void OnCollisionEnter2D(Collision2D col)
-    {
-        if (col.gameObject.tag == "Ground")
-        {
-            isGrounded = true;
-            numberOfJumps = maxNumberOfJumps;
-        }
-    }
-
     public void OnJump(InputValue val)
     {
-        if (numberOfJumps > 0)
+        if (isGrounded)
         {
             float innerValue = val.Get<float>();
             if (innerValue > 0)
             {
                 rb.velocity = new Vector2(rb.velocity.x, 0);
                 rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
-                numberOfJumps--;
             }
         }
     }
