@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Vector2 = UnityEngine.Vector2;
+using Vector3 = UnityEngine.Vector3;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -35,6 +37,8 @@ public class PlayerMovement : MonoBehaviour
     public float currentDashTime;
     public float startDashTime;
 
+    bool isReversed = false;
+
     private bool crRunning;
 
     Vector2 movement = Vector2.zero;
@@ -43,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
     SpriteRenderer sp = null;
     Animator animator = null;
 
-    private enum Movementstate { idle, run, jump, fall, dash}
+    private enum Movementstate {idle, run, jump, fall, dash}
 
 
     void Start()
@@ -51,7 +55,6 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         sp = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
-
     }
 
     void Update()
@@ -63,6 +66,7 @@ public class PlayerMovement : MonoBehaviour
         if (touchingGround)
         {
             isGrounded = true;
+            Debug.Log($"isGrounded : {isGrounded}");
         }
         else
         {
@@ -79,11 +83,12 @@ public class PlayerMovement : MonoBehaviour
             WallChechHit = Physics2D.Raycast(transform.position, new Vector2(-wallDistance, 0), wallDistance, groundLayer);
             Debug.DrawRay(transform.position, new Vector2(-wallDistance, 0), Color.cyan);
         }
-
+        
         if (WallChechHit && !isGrounded && movement.x != 0)
         {
             isWallSliding = true;
             jumpTime = Time.time + wallJumpTime;
+            Debug.Log($"isWallSliding {isWallSliding}");
         }
         else if (jumpTime < Time.time)
         {
@@ -92,9 +97,37 @@ public class PlayerMovement : MonoBehaviour
         
         if (isWallSliding)
         {
-            rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.x, -wallSlideSpeed, float.MaxValue));
+            if (isReversed)
+            {
+                rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.x, wallSlideSpeed, float.MaxValue));
+            }
+            else
+            {
+                rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.x, -wallSlideSpeed, float.MaxValue));
+            }
         }
 
+    }
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        Bonus bonus = collision.GetComponent<Bonus>();
+        BonusBack bonusBack = collision.GetComponent<BonusBack>();
+        if (bonus)
+        {
+            rb.gravityScale = -3f;
+            isReversed = true;
+            transform.eulerAngles = new Vector3(180, 0, 0);
+            jumpForce = -10;
+        }
+
+        if (bonusBack)
+        {
+            rb.gravityScale = 3f;
+            isReversed = false;
+            transform.eulerAngles = new Vector3(0, 0, 0);
+            jumpForce = 10;
+        }
     }
 
     IEnumerator DashCoroutine(Vector2 direction)
@@ -119,7 +152,7 @@ public class PlayerMovement : MonoBehaviour
     }
     public void OnJump(InputValue val)
     {
-        if (isGrounded)
+        if (isGrounded || isWallSliding)
         {
             float innerValue = val.Get<float>();
             if (innerValue > 0)
