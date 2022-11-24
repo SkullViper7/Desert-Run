@@ -30,6 +30,10 @@ public class PlayerMovement : MonoBehaviour
     bool isWallSliding = false;
     RaycastHit2D WallChechHit;
     float jumpTime;
+    public Transform leftWallCheck;
+    public Transform rightWallCheck;
+    bool isLeftTouching = false;
+    bool isRightTouching = false;
 
     [Header("Dash")]
     public float dashSpeed;
@@ -167,6 +171,26 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
+        bool isTouchingLeftWall = Physics2D.OverlapCircle(leftWallCheck.position, groundRadius, groundLayer);
+        bool isTouchingRightWall = Physics2D.OverlapCircle(rightWallCheck.position, groundRadius, groundLayer);
+        if (isTouchingLeftWall)
+        {
+            isLeftTouching = true;
+        }
+        else
+        {
+            isLeftTouching = false;
+        }
+
+        if (isTouchingRightWall)
+        {
+            isRightTouching = true;
+        }
+        else
+        {
+            isRightTouching = false;
+        }
+
         if (isWallSliding)
         {
             isWallJumping = true;
@@ -174,12 +198,12 @@ public class PlayerMovement : MonoBehaviour
             isWallJumping = true;
             if (innerValue > 0)
             {
-                if (movement.x < 0)
+                if (isLeftTouching)
                 {
                     rb.velocity = new Vector2(rb.velocity.x, 0);
                     rb.AddForce(new Vector2(5, jumpForce), ForceMode2D.Impulse);
                 }
-                else if (movement.x > 0)
+                else if (isRightTouching)
                 {
                     rb.velocity = new Vector2(rb.velocity.x, 0);
                     rb.AddForce(new Vector2(-5, jumpForce), ForceMode2D.Impulse);

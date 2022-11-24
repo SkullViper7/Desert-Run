@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SlimeBumper : MonoBehaviour
-{
+{/*
     bool onTop;
 
     // Start is called before the first frame update
@@ -21,5 +21,6 @@ public class SlimeBumper : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         onTop = true;
-    }
+    }*/
 }
+    
