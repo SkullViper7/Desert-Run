@@ -38,8 +38,8 @@ public class PlayerMovement : MonoBehaviour
     public float startDashTime;
 
     bool isReversed = false;
-
-    private bool crRunning;
+    bool crRunning = false;
+    bool isWallJumping = false;
 
     Vector2 movement = Vector2.zero;
 
@@ -59,7 +59,10 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.velocity = new Vector2(movement.x * speed, rb.velocity.y);
+        if (!isWallJumping)
+        {
+            rb.velocity = new Vector2(movement.x * speed, rb.velocity.y);
+        }
         UpdateAnimationState();
 
         bool touchingGround = Physics2D.OverlapCircle(groundCheck.position, groundRadius, groundLayer);
@@ -153,7 +156,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnJump(InputValue val)
     {
-        if (isGrounded || isWallSliding)
+        if (isGrounded)
         {
             float innerValue = val.Get<float>();
             if (innerValue > 0)
@@ -163,10 +166,36 @@ public class PlayerMovement : MonoBehaviour
                 Debug.Log("jump!");
             }
         }
+
+        if (isWallSliding)
+        {
+            isWallJumping = true;
+            float innerValue = val.Get<float>();
+            isWallJumping = true;
+            if (innerValue > 0)
+            {
+                if (movement.x < 0)
+                {
+                    rb.velocity = new Vector2(rb.velocity.x, 0);
+                    rb.AddForce(new Vector2(5, jumpForce), ForceMode2D.Impulse);
+                }
+                else if (movement.x > 0)
+                {
+                    rb.velocity = new Vector2(rb.velocity.x, 0);
+                    rb.AddForce(new Vector2(-5, jumpForce), ForceMode2D.Impulse);
+                }
+            }
+            Invoke("StopWallJumping", 0.5f);
+        }
     }
 
+    void StopWallJumping()
+    {
+        isWallJumping = false;
+    }
     public void OnMove(InputValue val)
     {
+        rb.velocity = new Vector2(movement.x * speed, rb.velocity.y);
         movement = val.Get<Vector2>();
     }
 
