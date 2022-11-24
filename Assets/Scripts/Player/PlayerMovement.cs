@@ -57,7 +57,7 @@ public class PlayerMovement : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         rb.velocity = new Vector2(movement.x * speed, rb.velocity.y);
         UpdateAnimationState();
@@ -94,16 +94,16 @@ public class PlayerMovement : MonoBehaviour
         {
             isWallSliding = false;
         }
-        
+
         if (isWallSliding)
         {
             if (isReversed)
             {
-                rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.x, wallSlideSpeed, float.MaxValue));
+                rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y, wallSlideSpeed, float.MaxValue));
             }
             else
             {
-                rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.x, -wallSlideSpeed, float.MaxValue));
+                rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y, -wallSlideSpeed, float.MaxValue));
             }
         }
 
@@ -137,11 +137,11 @@ public class PlayerMovement : MonoBehaviour
         currentDashTime = startDashTime;
         while (currentDashTime > 0f)
         {
-            currentDashTime -= Time.deltaTime; 
+            currentDashTime -= Time.deltaTime;
 
-            rb.velocity = direction * dashSpeed; 
-                                                
-            yield return null; 
+            rb.velocity = direction * dashSpeed;
+
+            yield return null;
         }
 
         rb.velocity = new Vector2(0f, 0f);
@@ -150,6 +150,7 @@ public class PlayerMovement : MonoBehaviour
         crRunning = false;
 
     }
+
     public void OnJump(InputValue val)
     {
         if (isGrounded || isWallSliding)
@@ -159,6 +160,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 rb.velocity = new Vector2(rb.velocity.x, 0);
                 rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+                Debug.Log("jump!");
             }
         }
     }
