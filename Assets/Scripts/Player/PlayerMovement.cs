@@ -28,12 +28,8 @@ public class PlayerMovement : MonoBehaviour
     public float wallSlideSpeed = 0.3f;
     public float wallDistance = 0.5f;
     bool isWallSliding = false;
-    RaycastHit2D WallChechHit;
+    RaycastHit2D WallCheckHit;
     float jumpTime;
-    public Transform leftWallCheck;
-    public Transform rightWallCheck;
-    bool isLeftTouching = false;
-    bool isRightTouching = false;
 
     [Header("Dash")]
     public float dashSpeed;
@@ -63,11 +59,7 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (!isWallJumping)
-        {
-            rb.velocity = new Vector2(movement.x * speed, rb.velocity.y);
-        }
-        UpdateAnimationState();
+        rb.velocity = new Vector2(movement.x * speed, rb.velocity.y);
 
         bool touchingGround = Physics2D.OverlapCircle(groundCheck.position, groundRadius, groundLayer);
         if (touchingGround)
@@ -82,16 +74,16 @@ public class PlayerMovement : MonoBehaviour
 
         if (movement.x > 0)
         {
-            WallChechHit = Physics2D.Raycast(transform.position, new Vector2(wallDistance, 0), wallDistance, groundLayer);
+            WallCheckHit = Physics2D.Raycast(transform.position, new Vector2(wallDistance, 0), wallDistance, groundLayer);
             Debug.DrawRay(transform.position, new Vector2(wallDistance, 0), Color.cyan);
         }
         else if (movement.x < 0)
         {
-            WallChechHit = Physics2D.Raycast(transform.position, new Vector2(-wallDistance, 0), wallDistance, groundLayer);
+            WallCheckHit = Physics2D.Raycast(transform.position, new Vector2(-wallDistance, 0), wallDistance, groundLayer);
             Debug.DrawRay(transform.position, new Vector2(-wallDistance, 0), Color.cyan);
         }
         
-        if (WallChechHit && !isGrounded && movement.x != 0)
+        if (WallCheckHit && !isGrounded && movement.x != 0)
         {
             isWallSliding = true;
             jumpTime = Time.time + wallJumpTime;
@@ -114,7 +106,10 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
+        UpdateAnimationState();
     }
+
+
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
@@ -171,39 +166,18 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        bool isTouchingLeftWall = Physics2D.OverlapCircle(leftWallCheck.position, groundRadius, groundLayer);
-        bool isTouchingRightWall = Physics2D.OverlapCircle(rightWallCheck.position, groundRadius, groundLayer);
-        if (isTouchingLeftWall)
-        {
-            isLeftTouching = true;
-        }
-        else
-        {
-            isLeftTouching = false;
-        }
-
-        if (isTouchingRightWall)
-        {
-            isRightTouching = true;
-        }
-        else
-        {
-            isRightTouching = false;
-        }
-
-        if (isWallSliding)
+        else if (isWallSliding)
         {
             isWallJumping = true;
             float innerValue = val.Get<float>();
-            isWallJumping = true;
             if (innerValue > 0)
             {
-                if (isLeftTouching)
+                if (movement.x < 0)
                 {
                     rb.velocity = new Vector2(rb.velocity.x, 0);
                     rb.AddForce(new Vector2(5, jumpForce), ForceMode2D.Impulse);
                 }
-                else if (isRightTouching)
+                else if (movement.x > 0)
                 {
                     rb.velocity = new Vector2(rb.velocity.x, 0);
                     rb.AddForce(new Vector2(-5, jumpForce), ForceMode2D.Impulse);
