@@ -21,12 +21,13 @@ public class PlayerMovement : MonoBehaviour
     public Transform groundCheck;
     public LayerMask groundLayer;
     public float groundRadius = 0.2f;
-    private bool isGrounded = false;
+    public bool isGrounded = false;
 
     [Header("WallJump")]
     public float wallJumpTime = 0.2f;
     public float wallSlideSpeed = 0.3f;
     public float wallDistance = 0.5f;
+    public float wallJumpForce = 5f;
     bool isWallSliding = false;
     RaycastHit2D WallCheckHit;
     float jumpTime;
@@ -59,10 +60,13 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.velocity = new Vector2(movement.x * speed, rb.velocity.y);
+        if (!isWallJumping)
+        {
+            rb.velocity = new Vector2(movement.x * speed, rb.velocity.y);
+        }
 
-        bool touchingGround = Physics2D.OverlapCircle(groundCheck.position, groundRadius, groundLayer);
-        if (touchingGround)
+        bool isTouchingGround = Physics2D.OverlapCircle(groundCheck.position, groundRadius, groundLayer);
+        if (isTouchingGround)
         {
             isGrounded = true;
             Debug.Log($"isGrounded : {isGrounded}");
@@ -155,6 +159,8 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnJump(InputValue val)
     {
+
+
         if (isGrounded)
         {
             float innerValue = val.Get<float>();
@@ -172,15 +178,15 @@ public class PlayerMovement : MonoBehaviour
             float innerValue = val.Get<float>();
             if (innerValue > 0)
             {
-                if (movement.x < 0)
+                if (movement.x > 0)
                 {
                     rb.velocity = new Vector2(rb.velocity.x, 0);
-                    rb.AddForce(new Vector2(5, jumpForce), ForceMode2D.Impulse);
+                    rb.AddForce(new Vector2(wallJumpForce, jumpForce), ForceMode2D.Impulse);
                 }
                 else if (movement.x > 0)
                 {
                     rb.velocity = new Vector2(rb.velocity.x, 0);
-                    rb.AddForce(new Vector2(-5, jumpForce), ForceMode2D.Impulse);
+                    rb.AddForce(new Vector2(-wallJumpForce, jumpForce), ForceMode2D.Impulse);
                 }
             }
             Invoke("StopWallJumping", 0.5f);

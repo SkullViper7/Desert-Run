@@ -238,12 +238,12 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
-  groundRadius: 0.5
+  groundRadius: 0.01
+  isGrounded: 0
   wallJumpTime: 0.2
   wallSlideSpeed: 0.3
   wallDistance: 0.55
-  leftWallCheck: {fileID: 0}
-  rightWallCheck: {fileID: 0}
+  wallJumpForce: 5
   dashSpeed: 20
   currentDashTime: 0
   startDashTime: 0.2
