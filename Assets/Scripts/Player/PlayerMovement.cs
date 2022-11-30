@@ -60,11 +60,21 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (!isWallJumping)
+        if (isGrounded)
         {
             rb.velocity = new Vector2(movement.x * speed, rb.velocity.y);
         }
-
+        else
+        {
+            float airControlAccelerationLimit = 1f; 
+            float airSpeedModifier = 1f; 
+            float targetHorizVelocity = movement.x * speed * airSpeedModifier; 
+            float targetHorizChange = targetHorizVelocity - rb.velocity.x; 
+            float horizChange = Mathf.Clamp(targetHorizChange, -airControlAccelerationLimit, airControlAccelerationLimit); 
+                                                  
+            rb.velocity = new Vector2(rb.velocity.x + horizChange, rb.velocity.y);
+        }
+        
         bool isTouchingGround = Physics2D.OverlapCircle(groundCheck.position, groundRadius, groundLayer);
         if (isTouchingGround)
         {
@@ -178,7 +188,7 @@ public class PlayerMovement : MonoBehaviour
             float innerValue = val.Get<float>();
             if (innerValue > 0)
             {
-                if (movement.x > 0)
+                if (movement.x < 0)
                 {
                     rb.velocity = new Vector2(rb.velocity.x, 0);
                     rb.AddForce(new Vector2(wallJumpForce, jumpForce), ForceMode2D.Impulse);
