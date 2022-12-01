@@ -9,12 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5737996561554232818}
-  - component: {fileID: 5737996561554232817}
   - component: {fileID: 5737996561554232816}
   - component: {fileID: 5737996561554232823}
   m_Layer: 0
   m_Name: Bonus
-  m_TagString: Untagged
+  m_TagString: GravityBonusUp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -34,18 +33,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5737996561554232817
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5737996561554232829}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc6293c95a95674469dd7a2e5385448b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &5737996561554232816
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -115,7 +102,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.65625, y: 1.7666668}
+    oldSize: {x: 1.4133333, y: 1.5075556}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

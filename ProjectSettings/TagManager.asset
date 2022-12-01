@@ -7,6 +7,8 @@ TagManager:
   - Walls
   - Ground
   - Spawn
+  - GravityBonusUp
+  - GravityBonusDown
   layers:
   - Default
   - TransparentFX

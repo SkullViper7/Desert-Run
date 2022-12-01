@@ -112,7 +112,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if (isReversed)
             {
-                rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y, wallSlideSpeed, float.MaxValue));
+                rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(-rb.velocity.y, wallSlideSpeed, float.MaxValue));
             }
             else
             {
@@ -127,9 +127,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        Bonus bonus = collision.GetComponent<Bonus>();
-        BonusBack bonusBack = collision.GetComponent<BonusBack>();
-        if (bonus)
+        if (collision.gameObject.tag == "GravityBonusUp")
         {
             rb.gravityScale = -3f;
             isReversed = true;
@@ -137,7 +135,7 @@ public class PlayerMovement : MonoBehaviour
             jumpForce = -10;
         }
 
-        if (bonusBack)
+        if (collision.gameObject.tag == "GravityBonusDown")
         {
             rb.gravityScale = 3f;
             isReversed = false;
@@ -181,22 +179,44 @@ public class PlayerMovement : MonoBehaviour
                 Debug.Log("jump!");
             }
         }
+        
 
         else if (isWallSliding)
         {
-            isWallJumping = true;
-            float innerValue = val.Get<float>();
-            if (innerValue > 0)
+            if (isReversed)
             {
-                if (movement.x < 0)
+                isWallJumping = true;
+                float innerValue = val.Get<float>();
+                if (innerValue > 0)
                 {
-                    rb.velocity = new Vector2(rb.velocity.x, 0);
-                    rb.AddForce(new Vector2(wallJumpForce, jumpForce), ForceMode2D.Impulse);
+                    if (movement.x < 0)
+                    {
+                        rb.velocity = new Vector2(rb.velocity.x, 0);
+                        rb.AddForce(new Vector2(wallJumpForce, -jumpForce), ForceMode2D.Impulse);
+                    }
+                    else if (movement.x > 0)
+                    {
+                        rb.velocity = new Vector2(rb.velocity.x, 0);
+                        rb.AddForce(new Vector2(-wallJumpForce, -jumpForce), ForceMode2D.Impulse);
+                    }
                 }
-                else if (movement.x > 0)
+            }
+            else
+            {
+                isWallJumping = true;
+                float innerValue = val.Get<float>();
+                if (innerValue > 0)
                 {
-                    rb.velocity = new Vector2(rb.velocity.x, 0);
-                    rb.AddForce(new Vector2(-wallJumpForce, jumpForce), ForceMode2D.Impulse);
+                    if (movement.x < 0)
+                    {
+                        rb.velocity = new Vector2(rb.velocity.x, 0);
+                        rb.AddForce(new Vector2(wallJumpForce, jumpForce), ForceMode2D.Impulse);
+                    }
+                    else if (movement.x > 0)
+                    {
+                        rb.velocity = new Vector2(rb.velocity.x, 0);
+                        rb.AddForce(new Vector2(-wallJumpForce, jumpForce), ForceMode2D.Impulse);
+                    }
                 }
             }
             Invoke("StopWallJumping", 0.5f);
