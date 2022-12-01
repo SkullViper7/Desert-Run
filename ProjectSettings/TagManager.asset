@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Walls
   - Ground
+  - Spawn
   layers:
   - Default
   - TransparentFX
