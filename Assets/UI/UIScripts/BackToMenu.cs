@@ -8,5 +8,6 @@ public class BackToMenu : MonoBehaviour
     public void BackMenu()
     {
         SceneManager.LoadScene("Menu");
+        Time.timeScale = 1.0f;
     }
 }
