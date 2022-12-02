@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     public float currentDashTime;
     public float startDashTime;
     private bool crRunning;
+    private PauseMenu pauseMenu;
 
     Vector2 movement = Vector2.zero;
 
@@ -31,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         sp = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
+        pauseMenu=FindObjectOfType<PauseMenu>();
 
     }
 
@@ -152,4 +154,11 @@ public class PlayerMovement : MonoBehaviour
         animator.SetInteger("State", (int)State);
     }
 
+    public void OnPause()
+    {
+        if(pauseMenu != null)
+        {
+            pauseMenu.TogglePause();
+        }
+    }
 }
