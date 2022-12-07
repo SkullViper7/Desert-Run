@@ -979,6 +979,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7776835350815076970, guid: 56392890e9b49ba48937824d7185d28a, type: 3}
   m_PrefabInstance: {fileID: 7776835351035158583}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &221172319 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2769582045278616659, guid: 56392890e9b49ba48937824d7185d28a, type: 3}
+  m_PrefabInstance: {fileID: 7776835351035158583}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &236021715
 GameObject:
   m_ObjectHideFlags: 0
@@ -1920,6 +1925,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pausePanel: {fileID: 221172316}
+  animator: {fileID: 221172319}
 --- !u!1 &825191077
 GameObject:
   m_ObjectHideFlags: 0
@@ -4686,10 +4692,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 293544139}
     m_Modifications:
-    - target: {fileID: 2769582045278616659, guid: 56392890e9b49ba48937824d7185d28a, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7776835350815076970, guid: 56392890e9b49ba48937824d7185d28a, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -4777,10 +4779,6 @@ PrefabInstance:
     - target: {fileID: 7776835350815076971, guid: 56392890e9b49ba48937824d7185d28a, type: 3}
       propertyPath: m_Name
       value: PausePanel
-      objectReference: {fileID: 0}
-    - target: {fileID: 7776835350815076971, guid: 56392890e9b49ba48937824d7185d28a, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 56392890e9b49ba48937824d7185d28a, type: 3}

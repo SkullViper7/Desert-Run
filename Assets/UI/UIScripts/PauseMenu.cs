@@ -9,7 +9,9 @@ public class PauseMenu : MonoBehaviour
 
     public static bool isPaused = false;
 
+    public Animator animator;
 
+    
 
     public void TogglePause()
     {
@@ -29,13 +31,15 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 0.0f;
         pausePanel.SetActive(true);
         isPaused= true;
+        animator.Play("PauseMenuAppear");
     }
 
     void Resume()
     {
         Time.timeScale = 1.0f;
-        pausePanel.SetActive(false);
+        
         isPaused = false;
+        animator.SetTrigger("isPressedP");
     }
 
     private void Update()
