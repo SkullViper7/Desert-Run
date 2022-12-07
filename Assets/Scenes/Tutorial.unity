@@ -287,18 +287,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -8855192602869447266, guid: 775553efa9cbbe849afe5ae731203a29, type: 3}
-      propertyPath: wallJumpTime
-      value: 0.2
-      objectReference: {fileID: 0}
     - target: {fileID: 3147264995909991218, guid: 775553efa9cbbe849afe5ae731203a29, type: 3}
       propertyPath: Spawn
       value: 
       objectReference: {fileID: 461420969}
-    - target: {fileID: 5305245211928742988, guid: 775553efa9cbbe849afe5ae731203a29, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7190385433152617740, guid: 775553efa9cbbe849afe5ae731203a29, type: 3}
       propertyPath: m_Name
       value: Player
@@ -306,18 +298,6 @@ PrefabInstance:
     - target: {fileID: 8462975656715226101, guid: 775553efa9cbbe849afe5ae731203a29, type: 3}
       propertyPath: m_RootOrder
       value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8462975656715226101, guid: 775553efa9cbbe849afe5ae731203a29, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.45888916
-      objectReference: {fileID: 0}
-    - target: {fileID: 8462975656715226101, guid: 775553efa9cbbe849afe5ae731203a29, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.45888916
-      objectReference: {fileID: 0}
-    - target: {fileID: 8462975656715226101, guid: 775553efa9cbbe849afe5ae731203a29, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.45888916
       objectReference: {fileID: 0}
     - target: {fileID: 8462975656715226101, guid: 775553efa9cbbe849afe5ae731203a29, type: 3}
       propertyPath: m_LocalPosition.x
