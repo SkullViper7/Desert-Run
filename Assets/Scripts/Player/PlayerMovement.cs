@@ -37,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
     bool canDash = true;
     public float currentDashTime;
     public float startDashTime;
+    private PauseMenu pauseMenu;
 
     bool isReversed = false;
     bool crRunning = false;
@@ -56,6 +57,7 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         sp = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
+        pauseMenu = FindObjectOfType<PauseMenu>();
     }
 
     void FixedUpdate()
@@ -294,4 +296,11 @@ public class PlayerMovement : MonoBehaviour
         animator.SetInteger("State", (int)State);
     }
 
+    public void OnPause()
+    {
+        if(pauseMenu != null)
+        {
+            pauseMenu.TogglePause();
+        }
+    }
 }
