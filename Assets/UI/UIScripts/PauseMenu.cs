@@ -8,7 +8,9 @@ public class PauseMenu : MonoBehaviour
     public GameObject pausePanel;
 
     public static bool isPaused = false;
-   
+
+
+
     public void TogglePause()
     {
         if(isPaused)

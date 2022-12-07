@@ -4,15 +4,27 @@ using UnityEngine;
 
 public class MenuDisappear : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public PauseMenu pauseMenu;
+    public bool isPressedP = false;
+    public bool isPauseMenu = PauseMenu.isPaused;
 
-    // Update is called once per frame
+    
+
     void Update()
     {
-        
+        if (Input.GetKeyUp(KeyCode.P))
+        {
+            if (!isPauseMenu)
+            {
+                isPressedP = false;
+            }
+
+            else
+            {
+                isPressedP= true;
+            }
+
+
+        }
     }
 }
