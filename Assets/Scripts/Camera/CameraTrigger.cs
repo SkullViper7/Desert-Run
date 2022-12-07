@@ -8,6 +8,13 @@ public class CameraTrigger : MonoBehaviour
     [SerializeField] private CinemachineVirtualCamera firstCam;
     [SerializeField] private CinemachineVirtualCamera secondCam;
 
+    public BoxCollider2D bc;
+
+    private void Start()
+    {
+        bc = GetComponent<BoxCollider2D>();    
+    }
+
     private void OnEnable()
     {
         CameraSwitcher.Register(firstCam);
@@ -29,6 +36,14 @@ public class CameraTrigger : MonoBehaviour
             {
                 CameraSwitcher.SwitchCamera(secondCam);
             }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            bc.isTrigger = false;
         }
     }
 }
