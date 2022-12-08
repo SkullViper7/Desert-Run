@@ -5,23 +5,41 @@ using UnityEngine;
 public class FallPlatform : MonoBehaviour
 {
 
-    private Rigidbody2D rb;
+    public int fallSpeed = 3;
+    private bool fallEnter = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (fallEnter == true)
+        {
+            transform.position = transform.position + new Vector3(0, -fallSpeed * Time.deltaTime, 0);
+        }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        rb.AddForce(Physics2D.gravity * rb.mass);
+        fallEnter = true;
+        if (collision.gameObject.tag == "Player")
+        {
+            collision.gameObject.transform.SetParent(transform);
+        }
     }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            collision.gameObject.transform.SetParent(null);
+        }
+    }
+
+    
 
 }
