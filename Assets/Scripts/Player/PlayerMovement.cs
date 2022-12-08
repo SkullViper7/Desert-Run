@@ -101,7 +101,6 @@ public class PlayerMovement : MonoBehaviour
         if (isTouchingGround)
         {
             isGrounded = true;
-            Debug.Log($"isGrounded : {isGrounded}");
         }
         else
         {
@@ -123,7 +122,6 @@ public class PlayerMovement : MonoBehaviour
         {
             isWallSliding = true;
             jumpTime = Time.time + wallJumpTime;
-            Debug.Log($"isWallSliding {isWallSliding}");
         }
         else if (jumpTime < Time.time)
         {
@@ -198,7 +196,6 @@ public class PlayerMovement : MonoBehaviour
             {
                 rb.velocity = new Vector2(rb.velocity.x, 0);
                 rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
-                Debug.Log("jump!");
             }
         }
         

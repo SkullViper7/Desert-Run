@@ -187,7 +187,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.49210644, y: -0.10640621}
+  m_Offset: {x: 0.29590368, y: -0.10640621}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -198,7 +198,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.015787125, y: 1.2492943}
+  m_Size: {x: 0.4183855, y: 1.2492943}
   m_EdgeRadius: 0
 --- !u!4 &210448033
 Transform:
@@ -208,7 +208,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 210448030}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.727, y: -2.575315, z: 0.07287753}
+  m_LocalPosition: {x: 2.727, y: -2.575315, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -229,6 +229,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firstCam: {fileID: 1110077147}
   secondCam: {fileID: 993224633}
+  PlayerTransform: {fileID: 796871683}
   isInSecondRoom: 0
 --- !u!1 &224426192
 GameObject:
@@ -330,6 +331,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 210448035}
     - target: {fileID: 6797277065753287094, guid: 775553efa9cbbe849afe5ae731203a29, type: 3}
+      propertyPath: camera1
+      value: 
+      objectReference: {fileID: 1110077147}
+    - target: {fileID: 6797277065753287094, guid: 775553efa9cbbe849afe5ae731203a29, type: 3}
+      propertyPath: camera2
+      value: 
+      objectReference: {fileID: 993224633}
+    - target: {fileID: 6797277065753287094, guid: 775553efa9cbbe849afe5ae731203a29, type: 3}
       propertyPath: firstSpawn
       value: 
       objectReference: {fileID: 461420969}
@@ -420,6 +429,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firstSpawn: {fileID: 461420969}
   secondSpawn: {fileID: 1202291203}
+  camera1: {fileID: 1110077147}
+  camera2: {fileID: 993224633}
   ct: {fileID: 210448035}
 --- !u!61 &451440901
 BoxCollider2D:
@@ -1262,6 +1273,11 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!4 &796871683 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8462975656715226101, guid: 775553efa9cbbe849afe5ae731203a29, type: 3}
+  m_PrefabInstance: {fileID: 323252668}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &841324673
 GameObject:
   m_ObjectHideFlags: 3
@@ -2997,7 +3013,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.058541298, y: 0.14285779}
+  m_Offset: {x: -0.11951256, y: 0.14285779}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -3008,7 +3024,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.044374466, y: 1.2857156}
+  m_Size: {x: 0.40048218, y: 1.2857156}
   m_EdgeRadius: 0
 --- !u!4 &1265411064
 Transform:
@@ -3018,7 +3034,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1265411062}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 28.42, y: -3.95, z: -0.083444834}
+  m_LocalPosition: {x: 28.42, y: -3.95, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3037,6 +3053,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce0d68217d04977499e0b4ec0712e808, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  firstSpawn: {fileID: 0}
 --- !u!1 &1504941993
 GameObject:
   m_ObjectHideFlags: 0
@@ -5077,7 +5094,7 @@ CompositeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
+  m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths:

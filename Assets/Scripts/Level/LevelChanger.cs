@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class LevelChanger : MonoBehaviour
 {
     private int nextSceneToLoad;
+
+    public Transform firstSpawn;
     private void Start()
     {
         nextSceneToLoad = SceneManager.GetActiveScene().buildIndex + 1;
