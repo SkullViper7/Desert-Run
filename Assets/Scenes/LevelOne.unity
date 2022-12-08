@@ -130,10 +130,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1458972868}
     m_Modifications:
-    - target: {fileID: 7776835350815076969, guid: 56392890e9b49ba48937824d7185d28a, type: 3}
-      propertyPath: m_Color.a
-      value: 0.49019608
-      objectReference: {fileID: 0}
     - target: {fileID: 7776835350815076970, guid: 56392890e9b49ba48937824d7185d28a, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -221,10 +217,6 @@ PrefabInstance:
     - target: {fileID: 7776835350815076971, guid: 56392890e9b49ba48937824d7185d28a, type: 3}
       propertyPath: m_Name
       value: PausePanel
-      objectReference: {fileID: 0}
-    - target: {fileID: 7776835350815076971, guid: 56392890e9b49ba48937824d7185d28a, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 56392890e9b49ba48937824d7185d28a, type: 3}
@@ -347,6 +339,11 @@ GameObject:
 --- !u!224 &885093648 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7776835350815076970, guid: 56392890e9b49ba48937824d7185d28a, type: 3}
+  m_PrefabInstance: {fileID: 97814956}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &885093649 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2769582045278616659, guid: 56392890e9b49ba48937824d7185d28a, type: 3}
   m_PrefabInstance: {fileID: 97814956}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1458972864
@@ -760,6 +757,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PauseScript
       objectReference: {fileID: 0}
+    - target: {fileID: 7411838817655889791, guid: 59bc0b8940ae9e240b7cf5eaa0e6bfde, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 885093649}
     - target: {fileID: 7411838817655889791, guid: 59bc0b8940ae9e240b7cf5eaa0e6bfde, type: 3}
       propertyPath: pausePanel
       value: 

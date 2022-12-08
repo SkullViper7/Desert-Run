@@ -8,7 +8,11 @@ public class PauseMenu : MonoBehaviour
     public GameObject pausePanel;
 
     public static bool isPaused = false;
-   
+
+    public Animator animator;
+
+    
+
     public void TogglePause()
     {
         if(isPaused)
@@ -27,13 +31,15 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 0.0f;
         pausePanel.SetActive(true);
         isPaused= true;
+        animator.Play("PauseMenuAppear");
     }
 
     void Resume()
     {
         Time.timeScale = 1.0f;
-        pausePanel.SetActive(false);
+        
         isPaused = false;
+        animator.SetTrigger("isPressedP");
     }
 
     private void Update()

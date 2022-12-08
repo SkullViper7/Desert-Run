@@ -1,12 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class FallPlatform : MonoBehaviour
+public class DeathFallPlatform : MonoBehaviour
 {
 
     public int fallSpeed = 3;
     private bool fallEnter = false;
+    public Transform Spawn;
 
     // Start is called before the first frame update
     void Start()
@@ -25,21 +28,22 @@ public class FallPlatform : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        fallEnter = true;
         if (collision.gameObject.tag == "Player")
         {
-            collision.gameObject.transform.SetParent(transform);
+            fallEnter = true;
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D other)
     {
-        if (collision.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player")
         {
-            collision.gameObject.transform.SetParent(null);
+            Scene scene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(scene.name);
+            other.transform.position = Spawn.position;
         }
     }
 
-    
+
 
 }
