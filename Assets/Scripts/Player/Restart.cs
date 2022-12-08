@@ -5,11 +5,22 @@ using UnityEngine.InputSystem;
 
 public class Restart : MonoBehaviour
 {
-    public Transform Spawn;
+    public Transform firstSpawn;
+    public Transform secondSpawn;
+
+    public CameraTrigger ct;
 
     public void OnRestart(InputValue val)
     {
-        gameObject.transform.position = Spawn.position;
-        GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+        if (!ct.isInSecondRoom)
+        {
+            gameObject.transform.position = firstSpawn.position;
+            GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+        }
+        else
+        {
+            gameObject.transform.position = secondSpawn.position;
+            GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+        }
     }
 }

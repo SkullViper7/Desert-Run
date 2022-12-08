@@ -8,7 +8,9 @@ public class CameraTrigger : MonoBehaviour
     [SerializeField] private CinemachineVirtualCamera firstCam;
     [SerializeField] private CinemachineVirtualCamera secondCam;
 
-    public BoxCollider2D bc;
+    BoxCollider2D bc;
+
+    public bool isInSecondRoom = false;
 
     private void Start()
     {
@@ -44,6 +46,7 @@ public class CameraTrigger : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             bc.isTrigger = false;
+            isInSecondRoom = true;
         }
     }
 }
