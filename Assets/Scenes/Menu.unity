@@ -4611,6 +4611,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DeathCount
       objectReference: {fileID: 0}
+    - target: {fileID: 751029013304975232, guid: 211fbb4fee245974faf649d90d9cfa73, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 751029013304975295, guid: 211fbb4fee245974faf649d90d9cfa73, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
