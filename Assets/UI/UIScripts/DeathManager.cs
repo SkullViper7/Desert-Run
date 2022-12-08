@@ -16,6 +16,6 @@ public class DeathManager : MonoBehaviour
     private void Awake()
     {
         DontDestroyOnLoad(this);
-        PlayerPrefs.SetInt("deathCount", 0);
+        PlayerPrefs.SetInt("deathCount", PlayerPrefs.GetInt("deathCount", 0));
     }
 }
