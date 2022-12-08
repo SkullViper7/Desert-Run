@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Object = UnityEngine.Object;
 using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
 
@@ -51,6 +53,24 @@ public class PlayerMovement : MonoBehaviour
 
     private enum Movementstate {idle, run, jump, fall, dash}
 
+    private static PlayerMovement instance = null;
+    public static PlayerMovement Instance => instance;
+
+
+    private void Awake()
+    {
+        //Spawn du joueur
+            if (instance != null && instance != this)
+            {
+                Destroy(this.gameObject);
+                return;
+            }
+            else
+            {
+                instance = this;
+            }
+            DontDestroyOnLoad(this.gameObject);
+    }
 
     void Start()
     {
