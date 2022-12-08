@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class KillZone : MonoBehaviour
 {
@@ -15,11 +16,15 @@ public class KillZone : MonoBehaviour
         {
             if (!ct.isInSecondRoom)
             {
+                Scene scene = SceneManager.GetActiveScene();
+                SceneManager.LoadScene(scene.name);
                 other.gameObject.transform.position = firstSpawn.position;
                 other.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
             }
             else
             {
+                Scene scene = SceneManager.GetActiveScene();
+                SceneManager.LoadScene(scene.name);
                 other.gameObject.transform.position = secondSpawn.position;
                 other.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
             }
