@@ -13,23 +13,6 @@ public class CameraTrigger : MonoBehaviour
     GameObject Player;
 
     public bool isInSecondRoom = false;
-    /*
-    private static CameraTrigger instance = null;
-    public static CameraTrigger Instance => instance;
-    */
-    private void Awake()
-    {/*
-        if (instance != null && instance != this)
-        {
-            Destroy(this.gameObject);
-            return;
-        }
-        else
-        {
-            instance = this;
-        }*/
-        DontDestroyOnLoad(gameObject);
-    }
 
 
     private void Start()

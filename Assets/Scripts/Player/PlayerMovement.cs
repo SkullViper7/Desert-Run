@@ -53,24 +53,6 @@ public class PlayerMovement : MonoBehaviour
 
     private enum Movementstate {idle, run, jump, fall, dash}
 
-    private static PlayerMovement instance = null;
-    public static PlayerMovement Instance => instance;
-
-
-    private void Awake()
-    {
-        //Spawn du joueur
-            if (instance != null && instance != this)
-            {
-                Destroy(this.gameObject);
-                return;
-            }
-            else
-            {
-                instance = this;
-            }
-            DontDestroyOnLoad(this.gameObject);
-    }
 
     void Start()
     {
