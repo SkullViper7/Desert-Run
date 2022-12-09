@@ -37,7 +37,7 @@ public class OptionsSetup : MonoBehaviour
 
         else
         {
-            resolutionDropdown.value = Convert.ToInt32(Screen.currentResolution);
+            resolutionDropdown.value = currentResolutionIndex;
         }
 
         if (PlayerPrefs.HasKey("FullsreenPref"))
