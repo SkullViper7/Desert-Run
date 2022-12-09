@@ -28,7 +28,7 @@ public class KillZone : MonoBehaviour
                 other.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
 
                 PlayerPrefs.SetInt("deathCount", PlayerPrefs.GetInt("deathCount") + 1);
-            }
+            }            
         }
     }
 
