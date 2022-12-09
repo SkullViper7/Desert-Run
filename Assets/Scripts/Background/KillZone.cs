@@ -19,6 +19,7 @@ public class KillZone : MonoBehaviour
             {
                 other.gameObject.transform.position = firstSpawn.position;
                 other.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+                SingleTonReload.Instance.SceneResetAll();
 
                 PlayerPrefs.SetInt("deathCount", PlayerPrefs.GetInt("deathCount") + 1);
             }
@@ -26,6 +27,7 @@ public class KillZone : MonoBehaviour
             {
                 other.gameObject.transform.position = secondSpawn.position;
                 other.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+                SingleTonReload.Instance.SceneResetAll();
 
                 PlayerPrefs.SetInt("deathCount", PlayerPrefs.GetInt("deathCount") + 1);
             }            

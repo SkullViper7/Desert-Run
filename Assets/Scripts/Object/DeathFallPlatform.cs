@@ -7,9 +7,13 @@ using UnityEngine.SceneManagement;
 public class DeathFallPlatform : MonoBehaviour, IResetable
 {
 
+    public Transform firstSpawn;
+    public Transform secondSpawn;
+
+    public CameraTrigger ct;
+
     public int fallSpeed = 3;
     private bool fallEnter = false;
-    public Transform Spawn;
     Vector3 originalPos;
 
     // Start is called before the first frame update
@@ -40,9 +44,20 @@ public class DeathFallPlatform : MonoBehaviour, IResetable
     {
         if (other.gameObject.tag == "Player")
         {
-            SingleTonReload.Instance.SceneResetAll();
-            //SceneReset();
-            other.transform.position = Spawn.position;
+            if (!ct.isInSecondRoom)
+            {
+                other.gameObject.transform.position = firstSpawn.position;
+                SingleTonReload.Instance.SceneResetAll();
+
+                PlayerPrefs.SetInt("deathCount", PlayerPrefs.GetInt("deathCount") + 1);
+            }
+            else
+            {
+                other.gameObject.transform.position = secondSpawn.position;
+                SingleTonReload.Instance.SceneResetAll();
+
+                PlayerPrefs.SetInt("deathCount", PlayerPrefs.GetInt("deathCount") + 1);
+            }
             fallEnter = false;
         }
     }
@@ -50,6 +65,7 @@ public class DeathFallPlatform : MonoBehaviour, IResetable
     public void SceneReset()
     {
         gameObject.transform.position = originalPos;
+        fallEnter = false;
     }
 
 
