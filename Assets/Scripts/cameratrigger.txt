@@ -10,16 +10,13 @@ public class CameraTrigger : MonoBehaviour
 
     BoxCollider2D bc;
 
-    GameObject Player;
-
     public bool isInSecondRoom = false;
-
 
     private void Start()
     {
-        Player = GameObject.FindGameObjectWithTag("Player");
-        bc = GetComponent<BoxCollider2D>();
+        bc = GetComponent<BoxCollider2D>();    
     }
+
     private void OnEnable()
     {
         CameraSwitcher.Register(firstCam);
@@ -33,11 +30,14 @@ public class CameraTrigger : MonoBehaviour
         CameraSwitcher.Unregister(secondCam);
     }
 
-    private void FixedUpdate()
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (Player.transform.position.x > 9.3f)
+        if (other.gameObject.tag == "Player")
         {
-            CameraSwitcher.SwitchCamera(secondCam);
+            if (CameraSwitcher.IsActiveCamera(firstCam))
+            {
+                CameraSwitcher.SwitchCamera(secondCam);
+            }
         }
     }
 

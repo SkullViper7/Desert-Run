@@ -10,12 +10,12 @@ public class DeathManager : MonoBehaviour
 
     public void Update()
     {
-        deathsCounterDisplay.text = "Death Count : " + PlayerPrefs.GetInt("deathCount").ToString();
+        deathsCounterDisplay.text = "Death Count : " + PlayerPrefs.GetInt("deathCount", 0).ToString();
     }
 
     private void Awake()
     {
-        DontDestroyOnLoad(this);
+        
         PlayerPrefs.SetInt("deathCount", PlayerPrefs.GetInt("deathCount", 0));
     }
 }
