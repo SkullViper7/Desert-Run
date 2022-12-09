@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 2189036152102605198}
   - component: {fileID: -2708388913646360803}
   - component: {fileID: -8855192602869447266}
-  - component: {fileID: 3147264995909991218}
+  - component: {fileID: 6797277065753287094}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -248,7 +248,7 @@ MonoBehaviour:
   dashSpeed: 20
   currentDashTime: 0
   startDashTime: 0.2
---- !u!114 &3147264995909991218
+--- !u!114 &6797277065753287094
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -260,4 +260,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 032b584a133a08b4f872054a0a370bbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Spawn: {fileID: 0}
+  firstSpawn: {fileID: 0}
+  secondSpawn: {fileID: 0}
