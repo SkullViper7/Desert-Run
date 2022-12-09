@@ -1443,6 +1443,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1384885376372449589, guid: 89951346ec946a94580fce3b03c105b9, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6945687192804486397, guid: 89951346ec946a94580fce3b03c105b9, type: 3}
       propertyPath: ct
       value: 
@@ -1527,6 +1531,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 21251019146090911, guid: 89951346ec946a94580fce3b03c105b9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1384885376372449589, guid: 89951346ec946a94580fce3b03c105b9, type: 3}
+      propertyPath: m_SortingOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6945687192804486397, guid: 89951346ec946a94580fce3b03c105b9, type: 3}
@@ -1928,6 +1936,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 21251019146090911, guid: 89951346ec946a94580fce3b03c105b9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1384885376372449589, guid: 89951346ec946a94580fce3b03c105b9, type: 3}
+      propertyPath: m_SortingOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6945687192804486397, guid: 89951346ec946a94580fce3b03c105b9, type: 3}
@@ -3516,7 +3528,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce0d68217d04977499e0b4ec0712e808, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstSpawn: {fileID: 0}
 --- !u!1 &1504941993
 GameObject:
   m_ObjectHideFlags: 0
@@ -5802,6 +5813,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 21251019146090911, guid: 89951346ec946a94580fce3b03c105b9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1384885376372449589, guid: 89951346ec946a94580fce3b03c105b9, type: 3}
+      propertyPath: m_SortingOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6945687192804486397, guid: 89951346ec946a94580fce3b03c105b9, type: 3}
