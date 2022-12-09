@@ -9,9 +9,6 @@ public class KillZone : MonoBehaviour
     public Transform firstSpawn;
     public Transform secondSpawn;
 
-    public CinemachineVirtualCamera camera1;
-    public CinemachineVirtualCamera camera2;
-
     public CameraTrigger ct;
 
     public void OnTriggerEnter2D(Collider2D other)

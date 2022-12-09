@@ -9,8 +9,6 @@ public class Restart : MonoBehaviour
 {
     public Transform firstSpawn;
     public Transform secondSpawn;
-    public CinemachineVirtualCamera camera1;
-    public CinemachineVirtualCamera camera2;
 
     public CameraTrigger ct;
 
