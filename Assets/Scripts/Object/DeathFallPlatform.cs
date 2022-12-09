@@ -4,17 +4,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class DeathFallPlatform : MonoBehaviour
+public class DeathFallPlatform : MonoBehaviour, IResetable
 {
 
     public int fallSpeed = 3;
     private bool fallEnter = false;
     public Transform Spawn;
+    Vector3 originalPos;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        originalPos = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
+        SingleTonReload.Instance.deathReload.Add(this);
     }
 
     // Update is called once per frame
@@ -38,12 +40,17 @@ public class DeathFallPlatform : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            Scene scene = SceneManager.GetActiveScene();
-            SceneManager.LoadScene(scene.name);
+            SingleTonReload.Instance.SceneResetAll();
+            //SceneReset();
             other.transform.position = Spawn.position;
+            fallEnter = false;
         }
     }
 
+    public void SceneReset()
+    {
+        gameObject.transform.position = originalPos;
+    }
 
 
 }

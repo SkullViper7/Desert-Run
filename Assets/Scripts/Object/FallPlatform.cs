@@ -2,16 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FallPlatform : MonoBehaviour
+public class FallPlatform : MonoBehaviour, IResetable
 {
 
     public int fallSpeed = 3;
+    Vector3 originalPos;
     private bool fallEnter = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        originalPos = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
+        SingleTonReload.Instance.deathReload.Add(this);
     }
 
     // Update is called once per frame
@@ -40,6 +42,10 @@ public class FallPlatform : MonoBehaviour
         }
     }
 
-    
+    public void SceneReset()
+    {
+        gameObject.transform.position = originalPos;
+        fallEnter = false;
+    }
 
 }
