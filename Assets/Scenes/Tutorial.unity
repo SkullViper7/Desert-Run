@@ -1658,7 +1658,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fb9754650ca87f4e8322fa3231d4e8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parallaxFactor: 0.8
+  parallaxFactor: 0.9
 --- !u!212 &1021095851
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5981,7 +5981,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fb9754650ca87f4e8322fa3231d4e8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parallaxFactor: 1
+  parallaxFactor: 0.9
 --- !u!212 &2145204302
 SpriteRenderer:
   m_ObjectHideFlags: 0
