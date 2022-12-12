@@ -20,4 +20,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level 2.unity
     guid: 50eab7d0687884b43a6ef5ccb3fd4fd8
+  - enabled: 1
+    path: Assets/Scenes/TestAlexia.unity
+    guid: fb7a47f6363c2b2448f4e31e0f1e8b67
+  - enabled: 1
+    path: Assets/Scenes/TestAlexia 1.unity
+    guid: c39a01ffd7353154b985c937e3645eed
   m_configObjects: {}
