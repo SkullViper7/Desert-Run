@@ -17,12 +17,14 @@ public class Restart : MonoBehaviour
         if (!ct.isInSecondRoom)
         {
             gameObject.transform.position = firstSpawn.position;
+            SingleTonReload.Instance.SceneResetAll();
 
             GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
         }
         else
         {
             gameObject.transform.position = secondSpawn.position;
+            SingleTonReload.Instance.SceneResetAll();
 
             GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
         }
