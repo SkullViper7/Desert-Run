@@ -39,6 +39,8 @@ public class PlayerMovement : MonoBehaviour
     bool canDash = true;
     public float currentDashTime;
     public float startDashTime;
+    private int dashNumber;
+
     private PauseMenu pauseMenu;
 
     bool isReversed = false;
@@ -83,6 +85,7 @@ public class PlayerMovement : MonoBehaviour
         if (isTouchingGround)
         {
             isGrounded = true;
+            dashNumber = 1;
         }
         else
         {
@@ -148,23 +151,29 @@ public class PlayerMovement : MonoBehaviour
 
     IEnumerator DashCoroutine(Vector2 direction)
     {
-        crRunning = true;
-        canDash = false;
-        currentDashTime = startDashTime;
-        while (currentDashTime > 0f)
+        if (!isGrounded)
         {
-            currentDashTime -= Time.deltaTime;
+            if (dashNumber == 1)
+            {
+                crRunning = true;
+                canDash = false;
+                currentDashTime = startDashTime;
+                while (currentDashTime > 0f)
+                {
+                    currentDashTime -= Time.deltaTime;
 
-            rb.velocity = direction * dashSpeed;
+                    rb.velocity = direction * dashSpeed;
 
-            yield return null;
+                    yield return null;
+                }
+
+                rb.velocity = new Vector2(0f, 0f);
+
+                canDash = true;
+                crRunning = false;
+            }
+            dashNumber = 0;
         }
-
-        rb.velocity = new Vector2(0f, 0f);
-
-        canDash = true;
-        crRunning = false;
-
     }
 
     public void OnJump(InputValue val)
