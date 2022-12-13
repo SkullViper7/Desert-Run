@@ -248,6 +248,7 @@ MonoBehaviour:
   dashSpeed: 20
   currentDashTime: 0
   startDashTime: 0.2
+  dashCooldown: 1
 --- !u!114 &6797277065753287094
 MonoBehaviour:
   m_ObjectHideFlags: 0
