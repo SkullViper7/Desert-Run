@@ -134,19 +134,29 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.gameObject.tag == "GravityBonusUp")
         {
-            rb.gravityScale = -3f;
-            isReversed = true;
-            transform.eulerAngles = new Vector3(180, 0, 0);
-            jumpForce = -10;
+            EnableReverse();
         }
 
         if (collision.gameObject.tag == "GravityBonusDown")
         {
-            rb.gravityScale = 3f;
-            isReversed = false;
-            transform.eulerAngles = new Vector3(0, 0, 0);
-            jumpForce = 10;
+            DisableReverse();
         }
+    }
+
+    public void EnableReverse()
+    {
+        rb.gravityScale = -3f;
+        isReversed = true;
+        transform.eulerAngles = new Vector3(0, 0, 180);
+        jumpForce = -10;
+    }
+
+    public void DisableReverse()
+    {
+        rb.gravityScale = 3f;
+        isReversed = false;
+        transform.eulerAngles = new Vector3(0, 0, 0);
+        jumpForce = 10;
     }
 
     IEnumerator DashCoroutine(Vector2 direction)

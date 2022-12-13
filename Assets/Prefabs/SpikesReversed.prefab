@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 21251019146090911}
   - component: {fileID: 1384885376372449589}
   - component: {fileID: 3114684215090618193}
-  - component: {fileID: 8977892239484504389}
+  - component: {fileID: 253936244755889268}
   m_Layer: 0
   m_Name: SpikesReversed
   m_TagString: Untagged
@@ -112,7 +112,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.42512846}
   m_EdgeRadius: 0
---- !u!114 &8977892239484504389
+--- !u!114 &253936244755889268
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -121,7 +121,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8778566668594546795}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7567e500e5209b345a9ed070f50b5c55, type: 3}
+  m_Script: {fileID: 11500000, guid: a7d9535d1c53c07499d79007ca7f923f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   firstSpawn: {fileID: 0}
