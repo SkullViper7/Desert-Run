@@ -27,8 +27,8 @@ RectTransform:
   m_GameObject: {fileID: 6824084400508116190}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5391, y: 1.5391, z: 1.5391}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -68,8 +68,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Death Count : '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5954e64fa868210439be023706e4f401, type: 2}
-  m_sharedMaterial: {fileID: 4728600590105359908, guid: 5954e64fa868210439be023706e4f401, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2b270801f4b87714e959ff262d38e2e7, type: 2}
+  m_sharedMaterial: {fileID: 8552729549708476651, guid: 2b270801f4b87714e959ff262d38e2e7, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -93,8 +93,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 70
+  m_fontSizeBase: 70
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

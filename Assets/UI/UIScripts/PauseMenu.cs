@@ -7,11 +7,13 @@ public class PauseMenu : MonoBehaviour
 {
     public GameObject pausePanel;
 
-    public static bool isPaused = false;
+    public bool isPaused = false;
 
     public Animator animator;
 
-    
+    public GameObject tip1;
+    public GameObject tip2;
+    public GameObject tip3;
 
     public void TogglePause()
     {
@@ -32,6 +34,9 @@ public class PauseMenu : MonoBehaviour
         pausePanel.SetActive(true);
         isPaused= true;
         animator.Play("PauseMenuAppear");
+        tip1.SetActive(false);
+        tip2.SetActive(false);
+        tip3.SetActive(false);
     }
 
     void Resume()
@@ -40,6 +45,20 @@ public class PauseMenu : MonoBehaviour
         
         isPaused = false;
         animator.SetTrigger("isPressedP");
+
+        if (!tip2.activeSelf && !tip3.activeSelf) 
+        {
+            tip1.SetActive(true);
+        }
+        else if (!tip1.activeSelf && !tip3.activeSelf)
+        {
+            tip2.SetActive(true);
+            tip3.SetActive(true);
+        }
+        else if (!tip2.activeSelf && !tip1.activeSelf)
+        {
+            tip3.SetActive(true);
+        }
     }
 
     private void Update()
