@@ -14,7 +14,6 @@ public class CameraTrigger : MonoBehaviour
 
     public bool isInSecondRoom = false;
 
-
     private void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
@@ -38,15 +37,12 @@ public class CameraTrigger : MonoBehaviour
         if (Player.transform.position.x > 9.3f)
         {
             CameraSwitcher.SwitchCamera(secondCam);
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.gameObject.tag == "Player")
-        {
-            bc.isTrigger = false;
             isInSecondRoom = true;
         }
+        if (Player.transform.position.x > 11f)
+        {
+            bc.isTrigger = false;
+        }
+
     }
 }

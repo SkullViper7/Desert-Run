@@ -6,13 +6,18 @@ using UnityEngine.InputSystem;
 
 public class Tip3 : MonoBehaviour
 {
+    public Tip4 t4;
     public void Enable()
     {
         gameObject.SetActive(true);
     }
 
-    public void OnDash(InputValue val)
+    private void Update()
     {
-        gameObject.SetActive(false);
+        if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.JoystickButton2))
+        {
+            gameObject.SetActive(false);
+            t4.Enable();
+        }
     }
 }
