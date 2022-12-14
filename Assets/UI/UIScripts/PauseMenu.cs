@@ -61,9 +61,10 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
+
     private void Update()
     {
-        if (Input.GetKeyUp(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.JoystickButton7))
         {
             if (!isPaused) {
             Pause();
