@@ -30,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
     public float wallSlideSpeed = 0.3f;
     public float wallDistance = 0.5f;
     public float wallJumpForce = 5f;
-    bool isWallSliding = false;
+    public bool isWallSliding = false;
     public bool isWallJumping = false;
     RaycastHit2D WallCheckHit;
     float jumpTime;

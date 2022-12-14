@@ -7,9 +7,12 @@ public class Tip1 : MonoBehaviour
 {
     public Tip2 t2;
 
-    public void OnMove(InputValue val)
+    private void Update()
     {
-        gameObject.SetActive(false);
-        t2.Enable();
+        if (Input.GetAxis("Horizontal") != 0)
+        {
+            gameObject.SetActive(false);
+            t2.Enable();
+        }
     }
 }

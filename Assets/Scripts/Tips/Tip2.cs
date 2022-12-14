@@ -11,9 +11,12 @@ public class Tip2 : MonoBehaviour
         gameObject.SetActive(true);
     }
 
-    public void OnJump(InputValue val)
+    private void Update()
     {
-        gameObject.SetActive(false);
-        t3.Enable();
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.JoystickButton0))
+        {
+            gameObject.SetActive(false);
+            t3.Enable();
+        }
     }
 }

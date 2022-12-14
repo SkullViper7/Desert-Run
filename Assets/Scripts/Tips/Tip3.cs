@@ -12,9 +12,12 @@ public class Tip3 : MonoBehaviour
         gameObject.SetActive(true);
     }
 
-    public void OnDash(InputValue val)
+    private void Update()
     {
-        gameObject.SetActive(false);
-        t4.Enable();
+        if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.JoystickButton2))
+        {
+            gameObject.SetActive(false);
+            t4.Enable();
+        }
     }
 }

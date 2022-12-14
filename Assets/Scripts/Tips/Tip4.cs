@@ -7,11 +7,17 @@ public class Tip4 : MonoBehaviour
 {
     public PlayerMovement pm;
     public CameraTrigger ct;
-    public void OnJump(InputValue val)
+
+    public Tip5 t5;
+    private void Update()
     {
-        if (pm.isWallJumping && ct.isInSecondRoom)
+        if (pm.isWallSliding && ct.isInSecondRoom)
         {
-            gameObject.SetActive(false);
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.JoystickButton0))
+            {
+                gameObject.SetActive(false);
+                t5.Enable();
+            }
         }
     }
 
