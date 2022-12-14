@@ -26,7 +26,7 @@ public class Music : MonoBehaviour
     {
         Scene currentScene = SceneManager.GetActiveScene();
 
-        if (currentScene.name == "Menu")
+        if (currentScene.name == "Menu" && currentScene.name == "EndScreen")
         {
             Destroy(gameObject);
         }
