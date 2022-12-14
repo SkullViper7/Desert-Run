@@ -11,6 +11,7 @@ public class DeathFallPlatform : MonoBehaviour, IResetable
     public Transform secondSpawn;
 
     public CameraTrigger ct;
+    public PlayerMovement pm;
 
     public int fallSpeed = 3;
     private bool fallEnter = false;

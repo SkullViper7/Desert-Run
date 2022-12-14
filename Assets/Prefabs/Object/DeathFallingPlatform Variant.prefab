@@ -87,7 +87,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de53f3974778584458834168eb522bdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fallSpeed: 8
+--- !u!114 &-8555777096386544985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2288490414726759655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7d9535d1c53c07499d79007ca7f923f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   firstSpawn: {fileID: 0}
   secondSpawn: {fileID: 0}
   ct: {fileID: 0}
-  fallSpeed: 8
+  pm: {fileID: 0}

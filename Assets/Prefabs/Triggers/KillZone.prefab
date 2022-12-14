@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1423642837133317503}
   - component: {fileID: 1423642837133317500}
-  - component: {fileID: 1423642837133317501}
+  - component: {fileID: 1859611946}
   m_Layer: 0
   m_Name: KillZone
   m_TagString: Untagged
@@ -25,7 +25,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1423642837133317498}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -6.58088, y: -2.346877, z: 4.7038994}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -59,7 +59,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 37.985672, y: 0.16210413}
   m_EdgeRadius: 0
---- !u!114 &1423642837133317501
+--- !u!114 &1859611946
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -68,9 +68,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1423642837133317498}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c3cbd6db5a4cbe48b1222dd35a8e565, type: 3}
+  m_Script: {fileID: 11500000, guid: a7d9535d1c53c07499d79007ca7f923f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   firstSpawn: {fileID: 0}
   secondSpawn: {fileID: 0}
   ct: {fileID: 0}
+  pm: {fileID: 0}
