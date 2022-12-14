@@ -27,9 +27,9 @@ public class FallPlatform : MonoBehaviour, IResetable
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        fallEnter = true;
         if (collision.gameObject.tag == "Player")
         {
+            fallEnter = true;
             collision.gameObject.transform.SetParent(transform);
         }
     }
