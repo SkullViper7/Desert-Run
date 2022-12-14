@@ -31,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
     public float wallDistance = 0.5f;
     public float wallJumpForce = 5f;
     bool isWallSliding = false;
+    public bool isWallJumping = false;
     RaycastHit2D WallCheckHit;
     float jumpTime;
 
@@ -45,7 +46,6 @@ public class PlayerMovement : MonoBehaviour
 
     bool isReversed = false;
     bool crRunning = false;
-    bool isWallJumping = false;
 
     Vector2 movement = Vector2.zero;
 

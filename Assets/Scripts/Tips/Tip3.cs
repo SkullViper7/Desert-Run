@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 
 public class Tip3 : MonoBehaviour
 {
+    public Tip4 t4;
     public void Enable()
     {
         gameObject.SetActive(true);
@@ -14,5 +15,6 @@ public class Tip3 : MonoBehaviour
     public void OnDash(InputValue val)
     {
         gameObject.SetActive(false);
+        t4.Enable();
     }
 }
