@@ -11,7 +11,7 @@ public class QuitEndScreen : MonoBehaviour
         {
             SceneManager.LoadScene("Menu");
         }
-        Invoke("AutoQuit", 23);
+        Invoke("AutoQuit", 23.5f);
     }
     void AutoQuit()
     {
