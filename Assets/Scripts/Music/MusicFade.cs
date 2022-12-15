@@ -1,13 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class LevelLoader : MonoBehaviour
+public class MusicFade : MonoBehaviour
 {
-    public string sceneName = "Menu";
-
-    public AudioSource source;
+    AudioSource source;
     public float maxVolume;
     public float minVolume;
 
@@ -15,7 +12,7 @@ public class LevelLoader : MonoBehaviour
 
     private IEnumerator fadeOut;
 
-    public static LevelLoader instance;
+    public static MusicFade instance;
 
     private void Awake()
     {
@@ -23,8 +20,17 @@ public class LevelLoader : MonoBehaviour
         {
             instance = this;
         }
+        source = GetComponent<AudioSource>();
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            StartCoroutine(FadeOut(source, fadeOutDuration, minVolume));
+        }
+    }
+ 
     public IEnumerator FadeOut(AudioSource aSource, float duration, float targetVolume)
     {
         float timer = 0f;
@@ -38,17 +44,5 @@ public class LevelLoader : MonoBehaviour
             aSource.volume = newVolume;
             yield return null;
         }
-    }
-
-    public void Play()
-    {
-        StartCoroutine(FadeOut(source, fadeOutDuration, minVolume));
-        Invoke("LoadLevel", fadeOutDuration);
-
-    }
-
-    public void LoadLevel()
-    {
-        SceneManager.LoadScene(sceneName);
     }
 }

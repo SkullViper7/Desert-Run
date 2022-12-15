@@ -11,6 +11,7 @@ public class ReversedKillZone : MonoBehaviour
 
     public CameraTrigger ct;
     public PlayerMovement pm;
+    public DeathManager dm;
 
     public void OnTriggerEnter2D(Collider2D other)
     {
@@ -21,6 +22,8 @@ public class ReversedKillZone : MonoBehaviour
                 other.gameObject.transform.position = firstSpawn.position;
                 other.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
                 pm.DisableReverse();
+                dm.deathCount++;
+
 
                 SingleTonReload.Instance.SceneResetAll();
 
@@ -31,6 +34,7 @@ public class ReversedKillZone : MonoBehaviour
                 other.gameObject.transform.position = secondSpawn.position;
                 other.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
                 pm.DisableReverse();
+                dm.deathCount++;
 
                 SingleTonReload.Instance.SceneResetAll();
 

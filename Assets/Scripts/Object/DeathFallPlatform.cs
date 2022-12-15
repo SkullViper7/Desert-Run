@@ -12,6 +12,7 @@ public class DeathFallPlatform : MonoBehaviour, IResetable
 
     public CameraTrigger ct;
     public PlayerMovement pm;
+    public DeathManager dm;
 
     public int fallSpeed = 3;
     private bool fallEnter = false;
@@ -49,6 +50,8 @@ public class DeathFallPlatform : MonoBehaviour, IResetable
             {
                 other.gameObject.transform.position = firstSpawn.position;
                 SingleTonReload.Instance.SceneResetAll();
+                dm.deathCount++;
+
 
                 PlayerPrefs.SetInt("deathCount", PlayerPrefs.GetInt("deathCount") + 1);
             }
@@ -56,6 +59,7 @@ public class DeathFallPlatform : MonoBehaviour, IResetable
             {
                 other.gameObject.transform.position = secondSpawn.position;
                 SingleTonReload.Instance.SceneResetAll();
+                dm.deathCount++;
 
                 PlayerPrefs.SetInt("deathCount", PlayerPrefs.GetInt("deathCount") + 1);
             }

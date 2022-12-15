@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Music : MonoBehaviour
+public class DontStopTheMusic : MonoBehaviour
 {
-    private static Music instance = null;
-    public static Music Instance => instance;
+    private static DontStopTheMusic instance = null;
+    public static DontStopTheMusic Instance => instance;
 
     private void Awake()
     {

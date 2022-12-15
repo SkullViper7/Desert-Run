@@ -243,12 +243,14 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
-  groundRadius: 0.01
+  groundRadius: 0.05
   isGrounded: 0
   wallJumpTime: 0.2
   wallSlideSpeed: 0.3
-  wallDistance: 0.55
+  wallDistance: 0.25
   wallJumpForce: 10
+  isWallSliding: 0
+  isWallJumping: 0
   dashSpeed: 20
   currentDashTime: 0
   startDashTime: 0.2
@@ -267,6 +269,7 @@ MonoBehaviour:
   firstSpawn: {fileID: 0}
   secondSpawn: {fileID: 0}
   ct: {fileID: 0}
+  pm: {fileID: 0}
 --- !u!82 &3375777143642502157
 AudioSource:
   m_ObjectHideFlags: 0

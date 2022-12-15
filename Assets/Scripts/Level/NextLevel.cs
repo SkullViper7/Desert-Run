@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class NextLevel : MonoBehaviour
 {
     private int nextSceneToLoad;
+
     private void Start()
     {
         nextSceneToLoad = SceneManager.GetActiveScene().buildIndex + 1;
