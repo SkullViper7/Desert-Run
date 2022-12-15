@@ -477,6 +477,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 68242019548263577, guid: 7455374c62ccad74c8474da55d676cb2, type: 3}
+      propertyPath: velocity.y
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 68242019548263580, guid: 7455374c62ccad74c8474da55d676cb2, type: 3}
       propertyPath: m_Name
       value: Bump
