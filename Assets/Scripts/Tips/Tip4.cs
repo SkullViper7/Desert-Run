@@ -11,7 +11,7 @@ public class Tip4 : MonoBehaviour
     public Tip5 t5;
     private void Update()
     {
-        if (pm.isWallSliding && ct.isInSecondRoom)
+        if (pm.isWallSliding)
         {
             if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.JoystickButton0))
             {

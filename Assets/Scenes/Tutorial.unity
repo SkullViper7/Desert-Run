@@ -1007,6 +1007,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &320295292 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 5169532028606588900, guid: 8aaf3fa8b2826a24a9dafbf076514168, type: 3}
+  m_PrefabInstance: {fileID: 1579975205}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &323252668
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3834,6 +3839,10 @@ PrefabInstance:
       propertyPath: m_Colors.m_NormalColor.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7776835349895610609, guid: 56392890e9b49ba48937824d7185d28a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: BackMenu
+      objectReference: {fileID: 0}
     - target: {fileID: 7776835349895610610, guid: 56392890e9b49ba48937824d7185d28a, type: 3}
       propertyPath: m_LocalScale.y
       value: 6
@@ -3921,6 +3930,18 @@ PrefabInstance:
     - target: {fileID: 7776835350482469480, guid: 56392890e9b49ba48937824d7185d28a, type: 3}
       propertyPath: m_fontColorGradient.bottomRight.r
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7776835350782173438, guid: 56392890e9b49ba48937824d7185d28a, type: 3}
+      propertyPath: source
+      value: 
+      objectReference: {fileID: 320295292}
+    - target: {fileID: 7776835350782173438, guid: 56392890e9b49ba48937824d7185d28a, type: 3}
+      propertyPath: maxVolume
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7776835350782173438, guid: 56392890e9b49ba48937824d7185d28a, type: 3}
+      propertyPath: fadeOutDuration
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 7776835350815076970, guid: 56392890e9b49ba48937824d7185d28a, type: 3}
       propertyPath: m_Pivot.x
@@ -13081,6 +13102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   t4: {fileID: 7262826365161537347}
+  pm: {fileID: 1367080554}
 --- !u!1001 &7262826364816703629
 PrefabInstance:
   m_ObjectHideFlags: 0

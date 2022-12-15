@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 public class Tip3 : MonoBehaviour
 {
     public Tip4 t4;
+    public PlayerMovement pm;
     public void Enable()
     {
         gameObject.SetActive(true);
@@ -14,10 +15,13 @@ public class Tip3 : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.JoystickButton2))
+        if (!pm.isGrounded)
         {
-            gameObject.SetActive(false);
-            t4.Enable();
+            if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.JoystickButton2))
+            {
+                gameObject.SetActive(false);
+                t4.Enable();
+            }
         }
     }
 }
