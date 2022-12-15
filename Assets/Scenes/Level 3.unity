@@ -9343,6 +9343,10 @@ PrefabInstance:
       propertyPath: m_Colors.m_NormalColor.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7776835349895610609, guid: 56392890e9b49ba48937824d7185d28a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: BackMenu
+      objectReference: {fileID: 0}
     - target: {fileID: 7776835349895610610, guid: 56392890e9b49ba48937824d7185d28a, type: 3}
       propertyPath: m_LocalScale.y
       value: 6
@@ -9430,6 +9434,18 @@ PrefabInstance:
     - target: {fileID: 7776835350482469480, guid: 56392890e9b49ba48937824d7185d28a, type: 3}
       propertyPath: m_fontColorGradient.bottomRight.r
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7776835350782173438, guid: 56392890e9b49ba48937824d7185d28a, type: 3}
+      propertyPath: source
+      value: 
+      objectReference: {fileID: 118680121}
+    - target: {fileID: 7776835350782173438, guid: 56392890e9b49ba48937824d7185d28a, type: 3}
+      propertyPath: maxVolume
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7776835350782173438, guid: 56392890e9b49ba48937824d7185d28a, type: 3}
+      propertyPath: fadeOutDuration
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 7776835350815076970, guid: 56392890e9b49ba48937824d7185d28a, type: 3}
       propertyPath: m_Pivot.x
