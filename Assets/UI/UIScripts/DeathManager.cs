@@ -7,15 +7,10 @@ public class DeathManager : MonoBehaviour
 {
     
     public TMPro.TMP_Text deathsCounterDisplay;
+    public int deathCount;
 
     public void Update()
     {
-        deathsCounterDisplay.text = "Death Count : " + PlayerPrefs.GetInt("deathCount", 0).ToString();
-    }
-
-    private void Awake()
-    {
-        
-        PlayerPrefs.SetInt("deathCount", PlayerPrefs.GetInt("deathCount", 0));
+        deathsCounterDisplay.text = "Death Count : " + deathCount;
     }
 }

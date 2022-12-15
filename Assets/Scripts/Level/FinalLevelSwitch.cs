@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LevelLoader : MonoBehaviour
+public class FinalLevelSwitch : MonoBehaviour
 {
-    public string sceneName = "Menu";
+    private int nextSceneToLoad;
 
     public AudioSource source;
     public float maxVolume;
@@ -15,7 +15,7 @@ public class LevelLoader : MonoBehaviour
 
     private IEnumerator fadeOut;
 
-    public static LevelLoader instance;
+    public static FinalLevelSwitch instance;
 
     private void Awake()
     {
@@ -40,15 +40,22 @@ public class LevelLoader : MonoBehaviour
         }
     }
 
-    public void Play()
+    private void Start()
     {
-        StartCoroutine(FadeOut(source, fadeOutDuration, minVolume));
-        Invoke("LoadLevel", fadeOutDuration);
+        nextSceneToLoad = SceneManager.GetActiveScene().buildIndex + 1;
+    }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            StartCoroutine(FadeOut(source, fadeOutDuration, minVolume));
+            Invoke("LoadLevel", fadeOutDuration);
+        }
     }
 
     public void LoadLevel()
     {
-        SceneManager.LoadScene(sceneName);
+        SceneManager.LoadScene(nextSceneToLoad);
     }
 }
